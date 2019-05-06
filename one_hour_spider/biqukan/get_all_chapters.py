@@ -22,11 +22,13 @@ if __name__ == "__main__":
     #使用查询结果再创建一个BeautifulSoup对象,对其继续进行解析
     download_soup = BeautifulSoup(str(chapters), 'lxml')
     #计算章节个数
+    # print(download_soup.dl.contents)
     numbers = (len(download_soup.dl.contents) - 1) / 2 - 8
     index = 1
     #开始记录内容标志位,只要正文卷下面的链接,最新章节列表链接剔除
     begin_flag = False
     #遍历dl标签下所有子节点
+    # print(download_soup.dl.children)
     for child in download_soup.dl.children:
         #滤除回车
         if child != '\n':
